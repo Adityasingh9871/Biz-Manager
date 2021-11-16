@@ -4,8 +4,9 @@
         top: 4.5rem;
         left: 25vw;
         width: 70vw;
-        height: 100vh;
+        height: fit-content;
         border: solid 2px black;
+        z-index: 2;
     }
     
 }

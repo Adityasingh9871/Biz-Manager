@@ -77,7 +77,7 @@ export default function Invoice() {
 
     return (
         <div className={styles.desktopview}>
-            <div className={styles.form1} >
+            
             <TextField id="outlined-basic" label="client name" className={styles.clientname} onChange={(event)=>setclient(event.target.value)} variant="outlined" required />
                 
                 
@@ -87,13 +87,15 @@ export default function Invoice() {
                     <button className={styles.additem} onClick={()=>setcartmodal(true)}>add items</button>
                 </div>
 
-                <Modal isOpen={cartmodal} onRequestClose={()=>setcartmodal(false)} className={styles.cartmodal}>
+                <div >
+                <div  className={styles.cartmodal} >
                 {
                  productdata.map(item=>(    //map the data 
                  <Productcart key={item.product_id} product_id={item.product_id} product_name={item.product_name} product_price={item.product_price} user={item.user} cartitems={cartitems} setcartitems={setcartitems} />
                  ))
                 }
-                </Modal>
+                </div>
+                </div>
 
                 <div className={styles.cartitem}>
                 {
@@ -103,7 +105,7 @@ export default function Invoice() {
                 }
                 </div>
 
-                <button className={styles.generate} onClick={generate_invoive}>generate invoice</button>
+                {/* <button className={styles.generate} onClick={generate_invoive}>generate invoice</button>
 
                 <div className={styles.invoiceinfo}>
                     <div className={styles.tag2}>GENERATED INVOICE</div>
@@ -119,7 +121,7 @@ export default function Invoice() {
                     </table>
                     <div className={styles.temp1}></div>
                     {
-                        tempinvoice.map(data=>(
+                        cartitems.map(data=>(
                             <Generatedinvoice key={data.id} id={data.product_id} pname={data.product_name} quantity={data.quantity} price={data.price} amount={data.amount} />
                         ))
                     }
@@ -127,10 +129,10 @@ export default function Invoice() {
                     <div className={styles.subtotal}>Subtotal : ${subtotal}</div>
 
                     
-                </div>
+                </div> */}
                 
               
-            </div>
+            
         </div>
     )
 }

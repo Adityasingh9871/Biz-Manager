@@ -6,7 +6,7 @@ import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
-function Productcart(props) {
+function Stockupdate(props) {
     
     const [value, setvalue] = useState(0)     //sale value
     
@@ -30,56 +30,16 @@ function Productcart(props) {
         
         
         const addsale=()=>{
-            var obj={
-                pname:props.product_name,
-                quantity:value,
-                price:value*props.product_price
-            }
-            props.setcartitems(prevState =>[...prevState ,obj])
-            console.log("items",props.cartitems)
-           
-            {
-                {
-                    axios.post('http://localhost:3001/saleupdate',{
+            
+   
+                    axios.post('http://localhost:3001/stockupdate',{
                         product_id:props.product_id,
                         product_name:props.product_name,
-                        salecount:value,
-                        profit:value*props.product_price,
-                        day:day,
-                        user:props.user
-                        
-                    }).then(()=>{
-                        console.log('success')
-                       
-                    })
-                   
-                    axios.post('http://localhost:3001/weekday_table_update',{
-                        product_id:props.product_id,
-                        product_name:props.product_name,
-                        salecount:value,
-                        day:day,
+                        stock:value,
                         user:props.user
                     }).then(()=>{
                         console.log('success')
                     })
-
-                    axios.post('http://localhost:3001/profit_table',{
-                        
-                        user:props.user
-                    }).then(()=>{
-                        console.log('success')
-                    })
-
-                    axios.post('http://localhost:3001/growth_table',{
-                        user:localStorage.getItem('user')
-                    }).then(()=>{
-                        console.log('success')
-                    })
-
-
-                }
-            }
-
 
             setvalue(0)
   
@@ -92,10 +52,11 @@ function Productcart(props) {
     
 
     return (
-        <div className={styles.buttonsui}>      
+        <div>      
             
             <div className={styles.card}>
                 <button className={styles.addbtn} onClick={handleadd} >+</button>
+                
                 <div>{props.product_name}</div>
                 <div>={value}</div>
                 <button className={styles.subbtn} onClick={handlesubtract} >-</button>
@@ -110,4 +71,4 @@ function Productcart(props) {
     )
 }
 
-export default Productcart
+export default Stockupdate

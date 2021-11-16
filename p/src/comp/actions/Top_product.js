@@ -5,7 +5,7 @@ export default function Top_product(props) {
     return (
         <div>
             <div>
-                <li className={styles.top}>{props.pname}</li>
+                <div className={styles.top}>{props.pname}</div>
             </div>
 
 

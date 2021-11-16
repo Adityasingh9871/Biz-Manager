@@ -157,7 +157,7 @@
         left: 25vw;
         width: 70vw;
         height: fit-content;
-        
+        z-index: 2;
         padding: 1.5rem;
     }
     

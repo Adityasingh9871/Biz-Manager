@@ -1,10 +1,11 @@
 .header{
     width: 100vw;
     height: 10vh;
-    background-color:#8ce9e9;
+    background-color:#b1e1f7d0;
     z-index: 1;
     position: relative;
     z-index: 2;
+    border-radius: 10px;
 }
 
 

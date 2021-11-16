@@ -39,6 +39,23 @@ app.post('/sentdata', (req, res) => {
         }
     })
 
+})
+
+app.post('/stockupdate', (req, res) => {
+    const user = req.body.user
+    const id = req.body.product_id
+    const pname = req.body.product_name
+    const stock = req.body.stock
+    var qry = "update product set stock=stock+? where product_id=? and user=?;"
+    db.query(qry, [stock, id, user], (err, result) => {
+        if (err)
+        {
+            console.log(err)
+        }
+        else {
+            return res.send("hello")
+        }
+    })
 
 })
 

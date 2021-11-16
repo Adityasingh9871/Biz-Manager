@@ -6,6 +6,7 @@
         width: 70vw;
         height: 100vh;
         border: solid 2px black;
+        z-index: 2;
     }
     
 }
@@ -18,7 +19,7 @@
 }
 
 .clientname{
-
+    
 
 }
 
@@ -27,7 +28,8 @@
 .cart{
     display: flex;
     flex-direction: row;  
-    margin-top: 10px;  
+    margin-top: 10px; 
+    z-index: -1; 
 }
 
 .tag1{
@@ -41,6 +43,7 @@
     background-color: rgb(62, 181, 250);
     border-radius: 3px;
     height: 1.8rem;
+   
 }
 
 .generate{
@@ -53,6 +56,7 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+   
 
 }
 
@@ -63,6 +67,7 @@
     margin-top: 40px;
     border-radius: 5px;
     padding-bottom: 40px;
+    
 }
 
 .tag2{
@@ -99,12 +104,14 @@
 
 .cartmodal{
     width: 80%;
-    height: 80%;
-    background-color: rgb(199, 181, 181);
-    top: 5rem;
-    position: relative;
+    height: 60vh;
+    background-color: transparent;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    bottom: 5rem;
     overflow: scroll;
+    
+    
     
 }

@@ -8,7 +8,7 @@ import icon3 from '../../assets/charts.png'
 import icon4 from '../../assets/sale.png'
 import icon5 from '../../assets/profit.png'
 import icon6 from '../../assets/bill.png'
-import {Route,Link} from 'react-router-dom'
+import {Route,Link,Switch} from 'react-router-dom'
 import Products from '../products/Products'
 import List from '../list/List'
 import Charts from '../chart/Chart'
@@ -95,7 +95,7 @@ export default class Action extends React.Component {
                     </div>
 
                       </div>
-                    <div className={styles.rightside}>
+                    <Switch className={styles.rightside}>
                         <Route path='/addproduct'>
                           <Products />
                         </Route>
@@ -114,8 +114,11 @@ export default class Action extends React.Component {
                         <Route path='/invoice'>
                           <Invoice />
                         </Route>
+                        <Route path='/'>
+                          <Charts />
+                        </Route>
 
-                    </div>
+                    </Switch>
                 
                 
             </div>

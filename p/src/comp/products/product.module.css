@@ -5,15 +5,15 @@
 		left: 25vw;
 		width: 70vw;
 		height: fit-content;
-		background-color: #ffffff;
-		z-index: -1;
+		background-color:transparent;
+		z-index: 2;
 	}
 }
 
 .form {
 	display: flex;
 	flex-direction: column;
-	background-color: #ffffff;
+	background-color: transparent;
 	align-items: center;
 	z-index: -2;
 }

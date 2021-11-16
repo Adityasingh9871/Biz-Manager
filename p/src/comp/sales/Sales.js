@@ -2,6 +2,7 @@ import { StylesProvider } from '@material-ui/core';
 import axios from 'axios';
 import React, { Component } from 'react'
 import Addsales from './Addsales'
+import Stockupdate from './Stockupdate'
 import styles from './sale.module.css'
 
 export default class  Sales extends Component {
@@ -45,7 +46,7 @@ export default class  Sales extends Component {
         
     return (
         <div className={styles.desktopview}>
-            
+            <h2>Sale Update</h2>
             {this.state.data.map((item)=>(    //map the data 
                 <Addsales 
                 key={item.product_id}
@@ -53,13 +54,23 @@ export default class  Sales extends Component {
                 product_name={item.product_name}
                 product_price={item.product_price} 
                 user={item.user}
-                ref={this.submitref}
-                forinvoicecart={this.props.forinvoicecart}
-                client={this.props.client}
+                
                 
                 />
             ))}
 
+            <h2>Stock Update</h2>
+            {this.state.data.map((item)=>(    //map the data 
+                <Stockupdate 
+                key={item.product_id}
+                product_id={item.product_id}
+                product_name={item.product_name}
+                product_price={item.product_price} 
+                user={item.user}
+                
+                
+                />
+            ))}
             
             
            

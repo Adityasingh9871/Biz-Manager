@@ -6,6 +6,7 @@
         width: 70vw;
         height: 100vh;
         border: solid 2px black;
+        
     }
     
 }
@@ -29,6 +30,7 @@
     vertical-align: middle;
     line-height: 4rem;
     text-transform: capitalize;
+    z-index: 4;
 }
 
 .addbtn{
@@ -53,4 +55,5 @@
 .buttonsui{
     position: relative;
     top: 3rem;
+    
 }

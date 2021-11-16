@@ -23,9 +23,10 @@
 @media only screen and (min-width: 450px) {
     .desktopview{
         width: 25vw;
-        background-color: rgb(255, 255, 255);
+        background-color: transparent;
         position: fixed;
         top: 10vh;
+        z-index: 2;
     }
     
     }
