@@ -1,0 +1,131 @@
+@media only screen and (min-width: 450px) {
+    .desktopview{
+        position: absolute;
+        top: 2rem;
+        left: 25vw;
+        width: 70vw;
+        height: fit-content;
+       
+        padding: 20px;
+        
+    }
+    
+}
+
+
+
+@media only screen and (min-width: 450px) {
+    .barchart{
+        position: relative;
+        left: 50%;
+        top: -3rem;
+        background-color: rgb(255, 255, 255);
+        transform: translateX(-50%);
+        width: 80%;
+        height: 60%;
+        border: solid rgb(255, 255, 255) 1px;
+        border-radius: 10px;
+    }
+}
+
+@media only screen and (min-width: 450px) {
+    .barchartbox{
+        position: relative;
+        margin-top: 3rem;
+        border-radius: 10px;
+        border: solid rgb(255, 255, 255) 1px;
+        padding: 1vw;
+        background-color: #9BF6FF;
+        
+    }
+}
+
+@media only screen and (min-width: 450px) {
+    .tag{
+        font-size: xx-large;
+        position: relative;
+        top: 0;
+        left: 2rem;
+    }
+}
+
+@media only screen and (min-width: 450px) {
+    .doughnutchart{
+        position: relative;
+        left: 50%;
+        top: -3rem;
+        transform: translateX(-50%);
+        width: 70%;
+        border: solid rgb(255, 255, 255) 1px;
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+      
+    }
+}
+
+@media only screen and (min-width: 450px) {
+    .doughnutchartbox{
+        position: relative;
+        margin-top: 4rem;
+        border-radius: 10px;
+        border: solid rgb(255, 255, 255) 1px;
+        padding: 1vw;
+        background-color: #FFD6A5;
+        
+    }
+}
+
+@media only screen and (min-width: 450px) {
+    .curvedlinebox{
+        position: relative;
+        margin-top: 3rem;
+        border-radius: 10px;
+        border: solid rgb(255, 255, 255) 1px;
+        padding: 1vw;
+        background-color: #FDFFB6;
+        
+    }
+}
+@media only screen and (min-width: 450px) {
+    .curvedlinechart{
+        position: relative;
+        left: 50%;
+        top: -3rem;
+        transform: translateX(-50%);
+        overflow-x: scroll;
+        width: 80%;
+        height: 50vh;
+        border: solid rgb(255, 255, 255) 1px;
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        
+    }
+}
+@media only screen and (min-width: 450px) {
+    .curvedlinebox2{
+        position: relative;
+        margin-top: 3rem;
+        border-radius: 10px;
+        border: solid rgb(255, 255, 255) 1px;
+        padding: 1vw;
+        background-color: #CAFFBF;
+        
+    }
+}
+@media only screen and (min-width: 450px) {
+    .contain{
+        width: 100vw;
+    }
+}
+
+
+
+.curvedlinechart::-webkit-scrollbar {
+    display: none;
+  }
+.desktopview::-webkit-scrollbar {
+    display: none;
+  }
+
+
+
