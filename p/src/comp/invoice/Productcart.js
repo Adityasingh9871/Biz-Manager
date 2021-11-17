@@ -38,48 +38,7 @@ function Productcart(props) {
             props.setcartitems(prevState =>[...prevState ,obj])
             console.log("items",props.cartitems)
            
-            {
-                {
-                    axios.post('http://localhost:3001/saleupdate',{
-                        product_id:props.product_id,
-                        product_name:props.product_name,
-                        salecount:value,
-                        profit:value*props.product_price,
-                        day:day,
-                        user:props.user
-                        
-                    }).then(()=>{
-                        console.log('success')
-                       
-                    })
-                   
-                    axios.post('http://localhost:3001/weekday_table_update',{
-                        product_id:props.product_id,
-                        product_name:props.product_name,
-                        salecount:value,
-                        day:day,
-                        user:props.user
-                    }).then(()=>{
-                        console.log('success')
-                    })
-
-                    axios.post('http://localhost:3001/profit_table',{
-                        
-                        user:props.user
-                    }).then(()=>{
-                        console.log('success')
-                    })
-
-                    axios.post('http://localhost:3001/growth_table',{
-                        user:localStorage.getItem('user')
-                    }).then(()=>{
-                        console.log('success')
-                    })
-
-
-                }
-            }
-
+          
 
             setvalue(0)
   
