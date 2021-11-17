@@ -457,11 +457,12 @@ app.post('/registeruser', (req, res) => {
     const address = req.body.address
 
 
-    var qry = 'INSERT INTO USER_LOGIN(username,password,name,shopname,address) VALUE (?,?,?,?,?);'
+    var qry = 'INSERT INTO USER_LOGIN(username,password,namez,shopnamez,shopaddress) VALUE (?,?,?,?,?);'
 
     db.query(qry, [username, password,name,shopname,address], (err, result) => {
         if (err) {
             console.log(err)
+           // alert('User already Registered !')
         }
         else {
             console.log('user registered')

@@ -86,7 +86,7 @@ export default class  Profitview extends Component {
                     <div className={styles.tabs}>
                         <Tabs onChange={this.handleChange} >
                             <Tab label="Daily Profit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" value="1" />
-                            <Tab label="Monthly Profit" value="2" />
+                            <Tab label="Average Monthly Profit" value="2" />
                         </Tabs>
                     </div>
                     <div className={styles.panel}>

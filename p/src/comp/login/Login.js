@@ -39,6 +39,11 @@ export default function Login(props) {
         shopname: "",
         address: ""
     };
+    axios.get(`http://localhost:3001/getuserdata`)
+        .then((response) => {
+            userdata = response.data;
+
+        });
     userNameCheck = getFields(userdata, "username");
 
     const validationSchema = yup.object().shape({
@@ -94,6 +99,7 @@ export default function Login(props) {
             address: data.address
         }).then(() => {
             console.log('success')
+            alert(data.name + ', User Registered Successfully ! ')
 
         })
         
