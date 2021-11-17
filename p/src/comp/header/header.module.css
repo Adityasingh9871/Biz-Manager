@@ -2,9 +2,8 @@
     width: 100vw;
     height: 10vh;
     background-color:#b1e1f7d0;
-    z-index: 1;
     position: relative;
-    z-index: 2;
+    z-index: 3;
     border-radius: 10px;
 }
 

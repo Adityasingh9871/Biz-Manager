@@ -4,7 +4,7 @@ import styles from './invoice.module.css'
 export default function Generatedinvoice(props) {
     return (
         <div>
-            <table border='0' className={styles.table}>
+            <table border='0' className={styles.table2}>
 
             
             <tr>
@@ -12,7 +12,7 @@ export default function Generatedinvoice(props) {
                 <td>{props.pname}</td>
                 <td>{props.price}</td>
                 <td>{props.quantity}</td>
-                <td>${props.amount}</td>
+                <td>${props.price*props.quantity}</td>
             </tr>
             </table>
             

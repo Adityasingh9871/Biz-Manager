@@ -9,7 +9,7 @@ export default function Project(props) {
         <div>
             <Header loginstat={props.loginstat} setloginstat={props.setloginstat} />
             <div className={styles.action}><Action /></div>
-            <div className={styles.particle} ><Particle /></div>
+            {/* <div className={styles.particle} ><Particle /></div> */}
         </div>
     )
 }

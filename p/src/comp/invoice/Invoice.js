@@ -78,34 +78,64 @@ export default function Invoice() {
     return (
         <div className={styles.desktopview}>
             
-            <TextField id="outlined-basic" label="client name" className={styles.clientname} onChange={(event)=>setclient(event.target.value)} variant="outlined" required />
-                
+            <div className={styles.clientname}>
+            <TextField id="outlined-basic" label="client name"  onChange={(event)=>setclient(event.target.value)} variant="outlined" required />
+            </div>    
                 
                 <div className={styles.cart}>
                     <div className={styles.tag1}>CART:  </div>
 
                     <button className={styles.additem} onClick={()=>setcartmodal(true)}>add items</button>
-                </div>
-
-                <div >
-                <div  className={styles.cartmodal} >
-                {
-                 productdata.map(item=>(    //map the data 
-                 <Productcart key={item.product_id} product_id={item.product_id} product_name={item.product_name} product_price={item.product_price} user={item.user} cartitems={cartitems} setcartitems={setcartitems} />
-                 ))
-                }
-                </div>
-                </div>
-
-                <div className={styles.cartitem}>
+                    <div className={styles.cartitem}>
                 {
                  cartitems.map(item=>(    //map the data 
                  <div>{item.pname}&nbsp; x &nbsp;{item.quantity}</div>
                  ))
                 }
                 </div>
+                </div>
 
-                {/* <button className={styles.generate} onClick={generate_invoive}>generate invoice</button>
+                <div >
+                <Modal className={styles.cartitem} isOpen={cartmodal} onRequestClose={()=>setcartmodal(false)}  className={styles.cartmodal}  >
+                {
+                 productdata.map(item=>(    //map the data 
+                 <Productcart key={item.product_id} product_id={item.product_id} product_name={item.product_name} product_price={item.product_price} user={item.user} cartitems={cartitems} setcartitems={setcartitems} />
+                 ))
+                }
+                </Modal>
+                </div>
+
+                <div className={styles.invoicesection}>
+                    <div className={styles.i1}>INVOICE</div>
+                    <div className={styles.i2}>[Shopname]</div>
+                    <div className={styles.i3}>[Address]</div>
+                    <div className={styles.i5}>[invoice date]</div>
+                    <div className={styles.i4}>[Bill to]</div>
+
+
+                    <table border='0' className={styles.table}>
+                        <tr>
+                            <td className={styles.idtable}>id</td>
+                            <td>name</td>
+                            <td>price</td>
+                            <td>quantity</td>
+                            <td>amount</td>
+                        </tr>
+                    </table>
+
+                    <div className={styles.temp1}>
+                    {
+                        cartitems.map(data=>(
+                            <Generatedinvoice key={data.pname} id={data.product_id} pname={data.pname} quantity={data.quantity} price={data.price} amount={data.amount} />
+                        ))
+                    }
+                    </div>
+
+                </div>
+
+                
+
+                {/* /* <button className={styles.generate} onClick={generate_invoive}>generate invoice</button>
 
                 <div className={styles.invoiceinfo}>
                     <div className={styles.tag2}>GENERATED INVOICE</div>
@@ -129,7 +159,7 @@ export default function Invoice() {
                     <div className={styles.subtotal}>Subtotal : ${subtotal}</div>
 
                     
-                </div> */}
+                </div> */ }
                 
               
             
