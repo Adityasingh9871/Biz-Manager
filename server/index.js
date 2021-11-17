@@ -181,9 +181,9 @@ app.get('/totalprofit', (req, res) => {
 app.post('/growth_table', (req, res) => {
     const user = req.body.user
     
-    var qry2 = "insert into growth Select p1.date,coalesce(((p1.prof -(select p2.prof from profit p2 where p2.user_id=? and  p2.date= CURDATE() - INTERVAL 1 DAY))/p1.prof)*100) as growth ,p1.user_id from profit p1 where p1.date=current_date()  and p1.user_id=? on duplicate key update growth_percentage=(Select coalesce(((p1.prof -(select p2.prof from profit p2 where p2.user_id=? and p2.date= CURDATE() - INTERVAL 1 DAY))/p1.prof)*100) as growth from profit p1 where p1.date=current_date()  and p1.user_id=?);"
+    var qry2 = "insert into growth select p1.date,((p1.prof-p2.prof)/p1.prof)*100,p1.user_id  from profit p1,profit p2 where p2.date=curdate()- INTERVAL 1 DAY and p1.date=curdate() and p1.user_id=? on duplicate key update growth_percentage=(select (((p1.prof-p2.prof)/p1.prof)*100) from profit p1,profit p2 where p2.date=curdate()- INTERVAL 1 DAY and p1.date=curdate()  and p1.user_id=?);"
     
-    db.query(qry2, [user, user,user, user], (err, result) => {
+    db.query(qry2, [user, user], (err, result) => {
         if (err) {
             console.log(err)
         }
