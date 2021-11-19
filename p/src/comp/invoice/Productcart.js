@@ -33,13 +33,11 @@ function Productcart(props) {
             var obj={
                 pname:props.product_name,
                 quantity:value,
-                price:value*props.product_price
+                price:value*props.product_price,
+                id:props.product_id
             }
             props.setcartitems(prevState =>[...prevState ,obj])
             console.log("items",props.cartitems)
-           
-          
-
             setvalue(0)
   
         }

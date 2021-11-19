@@ -54,6 +54,14 @@
         align-items: center;
         justify-content: center;
     }
+
+    .filter{
+        position: relative;
+        left: -3rem;
+        line-height: 3rem;
+        vertical-align: middle;
+        cursor: pointer;
+    }
     
 
     .profit1{
@@ -80,6 +88,7 @@
         width: 50%;
         position: absolute;
         right: 0;
+        top: 0;
         height: 100%;
         line-height: 3rem;
         vertical-align: middle;
@@ -157,7 +166,7 @@
         left: 25vw;
         width: 70vw;
         height: fit-content;
-        z-index: 2;
+        
         padding: 1.5rem;
     }
     

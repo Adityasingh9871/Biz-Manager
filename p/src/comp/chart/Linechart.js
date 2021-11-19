@@ -21,7 +21,8 @@ export default class ApexChart extends Component {
   componentDidMount(){                 //get data from backend
     
     axios.get(`http://localhost:3001/dailyprofit`,{
-      params:{user:localStorage.getItem('user')}
+      params:{user:localStorage.getItem('user'),
+      filter:false}
     })
       .then(res => {
         const data1 = res.data;

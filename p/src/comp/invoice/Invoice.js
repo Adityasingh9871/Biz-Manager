@@ -12,6 +12,7 @@ import { TextField } from '@material-ui/core';
 export default function Invoice() {
 
     const [client, setclient] = useState('')
+    const [clientemail, setclientemail] = useState('')
     const [cart, setcart] = useState('')
     const [phone, setphone] = useState(0)
     const [email, setemail] = useState('')
@@ -21,19 +22,27 @@ export default function Invoice() {
     const [tempinvoice, settempinvoice] = useState([])
     const [subtotal, setsubtotal] = useState(0)
     const [cartitems, setcartitems] = useState([])
-  
-    const list=[];
+    const [shopdata, setshopdata] = useState({name:"",shopname:"",shopaddress:""})
+    
+    
 
     useEffect(() => {
+        
         axios.get('http://localhost:3001/receiveddata',{
             params:{user:localStorage.getItem('user')}
         })
         .then(response=>{
             const data1=response.data
-            setproductdata(data1)
-            console.log('products',productdata)
-            
-            
+            setproductdata(data1) 
+            console.log(productdata) 
+        })
+
+        axios.get('http://localhost:3001/getuserdata',{
+            params:{user:localStorage.getItem('user')}
+        })
+        .then(res=>{
+            const d=res.data;
+            setshopdata({name:d[0].name,shopname:d[0].shopname,shopaddress:d[0].shopaddress})
         })
     }, [])
 
@@ -59,6 +68,15 @@ export default function Invoice() {
             const data1=response.data
             settempinvoice(data1)
         })
+        
+        axios.get('http://localhost:3001/getuserdata',{
+            params:{user:localStorage.getItem('user')}
+        })
+        .then(response=>{
+            const data1=response.data
+            setshopdata(data1)
+            console.log("shop",shopdata)
+        })
 
         axios.get('http://localhost:3001/subtotal',{
             params:{user:localStorage.getItem('user'),
@@ -73,14 +91,50 @@ export default function Invoice() {
 
     }
 
+    const delete_product=(to_del_id)=>{
+        
+        let updated_data=cartitems.filter(data_ => data_.id != to_del_id);
+        console.log("clicked",updated_data)
+        setcartitems(updated_data);
+        findsubtotal();
+        console.log(subtotal)
+          
+    }
 
+
+    const findsubtotal=()=>{
+        let s=cartitems.map(items=>items.price)
+        const sum = s.reduce((partial_sum, a) => partial_sum + a, 0);
+        setsubtotal(sum)
+
+        var subf=<div className={styles.sub1}><div className={styles.sub2}>Subtotal&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal}</div><div className={styles.sub2}>Taxrate&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;4.25%</div><div className={styles.sub2}>Tax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal*0.0425}</div><div className={styles.sub2}>Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal-(subtotal*0.0425)}</div></div>
+    }
+    if(subtotal>0)
+    var subf=<div className={styles.sub1}><div className={styles.sub2}>Subtotal&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal}</div><div className={styles.sub2}>Taxrate&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;4.25%</div><div className={styles.sub2}>Tax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal*0.0425}</div><div className={styles.sub2}>Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal-(subtotal*0.0425)}</div></div>
+    else
+    var subf=<div></div>
+
+
+    const printinvoice=(val)=>{
+        var backup=document.body.innerHTML;
+        var divcontent=document.getElementById(val).innerHTML;
+        document.body.innerHTML=divcontent;
+        window.print();
+        document.body.innerHTML=backup;
+        window.location.reload();
+    }
+
+    let today = new Date().toLocaleDateString()
 
     return (
         <div className={styles.desktopview}>
             
             <div className={styles.clientname}>
             <TextField id="outlined-basic" label="client name"  onChange={(event)=>setclient(event.target.value)} variant="outlined" required />
-            </div>    
+            </div>  
+            <div className={styles.clientemail}>
+            <TextField id="outlined-basic" label="client email"  onChange={(event)=>setclientemail(event.target.value)} variant="outlined" required />
+            </div>  
                 
                 <div className={styles.cart}>
                     <div className={styles.tag1}>CART:  </div>
@@ -89,12 +143,20 @@ export default function Invoice() {
                     <div className={styles.cartitem}>
                 {
                  cartitems.map(item=>(    //map the data 
-                 <div>{item.pname}&nbsp; x &nbsp;{item.quantity}</div>
+                 <div className={styles.cartitem2}>{item.pname}&nbsp; x &nbsp;{item.quantity} <button className={styles.delbtn} onClick={()=>delete_product(item.id)}>delete</button></div>
+                 
                  ))
                 }
                 </div>
                 </div>
-
+                
+                
+                <div>
+                <button onClick={findsubtotal} className={styles.calcbtn}>calculate</button>
+                <button onClick={()=>printinvoice('invoice123')}  className={styles.print}>Print</button>
+                </div>
+                
+                
                 <div >
                 <Modal className={styles.cartitem} isOpen={cartmodal} onRequestClose={()=>setcartmodal(false)}  className={styles.cartmodal}  >
                 {
@@ -105,64 +167,50 @@ export default function Invoice() {
                 </Modal>
                 </div>
 
-                <div className={styles.invoicesection}>
+                <div className={styles.invoicesection} id='invoice123'>
                     <div className={styles.i1}>INVOICE</div>
-                    <div className={styles.i2}>[Shopname]</div>
-                    <div className={styles.i3}>[Address]</div>
-                    <div className={styles.i5}>[invoice date]</div>
-                    <div className={styles.i4}>[Bill to]</div>
+                    <div className={styles.i2}>{shopdata.shopname}</div>
+                    <div className={styles.i3}>{shopdata.shopaddress}</div>
+                    <div className={styles.i5}>{today}</div>
+                    <div className={styles.i6}>Bill To</div>
+                    <div className={styles.i4}>Name:&nbsp;{client}</div>
+                    <div className={styles.i7}>Email:&nbsp;&nbsp;{clientemail}</div>
 
 
                     <table border='0' className={styles.table}>
                         <tr>
                             <td className={styles.idtable}>id</td>
-                            <td>name</td>
-                            <td>price</td>
-                            <td>quantity</td>
-                            <td>amount</td>
+                            <td className={styles.td1}>name</td>
+                            <td className={styles.td1}>price</td>
+                            <td className={styles.td1}>quantity</td>
+                            <td className={styles.td1}>amount</td>
                         </tr>
                     </table>
 
-                    <div className={styles.temp1}>
+                    
                     {
                         cartitems.map(data=>(
-                            <Generatedinvoice key={data.pname} id={data.product_id} pname={data.pname} quantity={data.quantity} price={data.price} amount={data.amount} />
+                            <div className={styles.sub3}>
+                            <Generatedinvoice key={data.id} product_id={data.id} pname={data.pname} quantity={data.quantity} price={data.price} amount={data.amount} />
+                            </div>
                         ))
                     }
-                    </div>
+                    
+
+                    {/* <div className={styles.sub1}>
+                        <div className={styles.sub2}>Subtotal&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal}</div>
+                        <div className={styles.sub2}>Taxrate&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;4.25%</div>
+                        <div className={styles.sub2}>Tax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal*0.0425}</div>
+                        <div className={styles.sub2}>Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal-(subtotal*0.0425)}</div>
+                    </div> */}
+
+                    {subf}
+                    
 
                 </div>
 
                 
-
-                {/* /* <button className={styles.generate} onClick={generate_invoive}>generate invoice</button>
-
-                <div className={styles.invoiceinfo}>
-                    <div className={styles.tag2}>GENERATED INVOICE</div>
-                    
-                    <table border='0' className={styles.table}>
-                        <tr>
-                            <td className={styles.idtable}>id</td>
-                            <td>name</td>
-                            <td>price</td>
-                            <td>quantity</td>
-                            <td>amount</td>
-                        </tr>
-                    </table>
-                    <div className={styles.temp1}></div>
-                    {
-                        cartitems.map(data=>(
-                            <Generatedinvoice key={data.id} id={data.product_id} pname={data.product_name} quantity={data.quantity} price={data.price} amount={data.amount} />
-                        ))
-                    }
-                    <br></br>
-                    <div className={styles.subtotal}>Subtotal : ${subtotal}</div>
-
-                    
-                </div> */ }
-                
-              
-            
+ 
         </div>
     )
 }

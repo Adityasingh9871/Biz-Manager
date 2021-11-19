@@ -122,13 +122,18 @@ app.get('/chartsdata', (req, res) => {          //for charts and profit
 
 app.get('/dailyprofit', (req, res) => {
     const user = req.query.user
-    var qry = "select p.date,p.prof,g.growth_percentage from profit p,growth g where p.date=g.date and p.user_id=? and g.user_id=?;"
+    const filter = req.query.filter
+    
+    if(filter==="true")
+    var qry = "select p.date,p.prof,g.growth_percentage from profit p,growth g where p.date=g.date and p.user_id=? and g.user_id=? order by p.date desc ;"
+    else if(filter==="false")
+    var qry = "select p.date,p.prof,g.growth_percentage from profit p,growth g where p.date=g.date and p.user_id=? and g.user_id=? order by p.date;"
     db.query(qry, [user, user], (err, result) => {
         if (err) {
             console.log(err)
         }
         else {
-            console.log("extracted")
+            console.log("extracted daily profit")
             return res.send(result)
         }
     })
@@ -150,7 +155,13 @@ app.get('/monthlyprofit', (req, res) => {
 
 app.get('/salehistory', (req, res) => {
     const user = req.query.user
-    var qry = "select s.date,s.sale_count,s.profit,s.user,p.product_name,p.product_price from sale2 s, product p where s.product_id=p.product_id and p.user=?;"
+    const filter = req.query.filter
+    
+    if(filter==="true")
+    var qry = "select s.date,s.sale_count,s.profit,s.user,p.product_name,p.product_price from sale2 s, product p where s.product_id=p.product_id and p.user=? order by s.date desc;"
+    else if(filter==="false")
+    var qry = "select s.date,s.sale_count,s.profit,s.user,p.product_name,p.product_price from sale2 s, product p where s.product_id=p.product_id and p.user=? order by s.date;"
+
     db.query(qry, [user], (err, result) => {
         if (err) {
             console.log(err)
@@ -457,7 +468,7 @@ app.post('/registeruser', (req, res) => {
     const address = req.body.address
 
 
-    var qry = 'INSERT INTO USER_LOGIN(username,password,namez,shopnamez,shopaddress) VALUE (?,?,?,?,?);'
+    var qry = 'INSERT INTO USER_LOGIN(username,password,name,shopname,shopaddress) VALUE (?,?,?,?,?);'
 
     db.query(qry, [username, password,name,shopname,address], (err, result) => {
         if (err) {
@@ -475,16 +486,14 @@ app.post('/registeruser', (req, res) => {
 
 app.get('/getuserdata', (req, res) => {
     const user = req.query.user
-    console.log(user)
-    var qry = "SELECT * FROM  user_login "
-    db.query(qry, (err, result) => {
+    var qry = "SELECT name,shopname,shopaddress FROM  user_login where username=? "
+    db.query(qry,[user], (err, result) => {
         if (err) {
             console.log(err)
         }
         else {
-            res.send(result)
-
-            console.log("extracted")
+            console.log("shopdate returned")
+            return res.send(result)
         }
     })
 })

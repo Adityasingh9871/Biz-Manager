@@ -91,8 +91,9 @@ function Addsales(props) {
             <div className={styles.card}>
                 <button className={styles.addbtn} onClick={handleadd} >+</button>
                 
-                <div>{props.product_name}</div>
-                <div>={value}</div>
+                <div className={styles.pname}>{props.product_name}</div>
+                {/* <div>={value}</div> */}
+                <input type='number' value={value} className={styles.input1} onChange={(e)=>setvalue(e.target.value)} />
                 <button className={styles.subbtn} onClick={handlesubtract} >-</button>
                 
                 

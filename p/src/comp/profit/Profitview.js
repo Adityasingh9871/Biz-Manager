@@ -19,6 +19,7 @@ export default class  Profitview extends Component {
             totalprofit:0,
             salehistory:[],
             Value1:'1',
+            filter:"true"
         };
        
         
@@ -31,7 +32,8 @@ export default class  Profitview extends Component {
         
 
         axios.get(`http://localhost:3001/dailyprofit`,{
-          params:{user:localStorage.getItem('user')}
+          params:{user:localStorage.getItem('user'),
+          filter:this.state.filter}
         })
           .then(res => {
             const data1 = res.data;
@@ -58,7 +60,8 @@ export default class  Profitview extends Component {
           })
 
           axios.get(`http://localhost:3001/salehistory`,{
-          params:{user:localStorage.getItem('user')}
+          params:{user:localStorage.getItem('user'),
+          filter:this.state.filter}
         })
           .then(res => {
             const data1 = res.data;
@@ -69,7 +72,33 @@ export default class  Profitview extends Component {
 
    
     
-   
+   filter=()=>{
+     if(this.state.filter==='true')
+    this.setState({filter:"false"})
+    else if(this.state.filter==='false')
+    this.setState({filter:"true"})
+
+    axios.get(`http://localhost:3001/dailyprofit`,{
+          params:{user:localStorage.getItem('user'),
+          filter:this.state.filter
+        }
+        })
+          .then(res => {
+            const data1 = res.data;
+            this.setState({profit:data1})
+           
+          })
+
+    axios.get(`http://localhost:3001/salehistory`,{
+            params:{user:localStorage.getItem('user'),
+            filter:this.state.filter}
+          })
+            .then(res => {
+              const data1 = res.data;
+              this.setState({salehistory:data1})
+             
+            })
+   }
     
     
     handleChange = (event, newValue) => {
@@ -99,6 +128,7 @@ export default class  Profitview extends Component {
                               
                             <div className={styles.tableheading}>
                               <div className={styles.date1}>Date</div>
+                              <div className={styles.filter} onClick={this.filter}>&#x2195;</div>
                               <div className={styles.flex1}>
                               <div className={styles.profit1}>Profit</div>
                               <div className={styles.growth1}>Growth</div>
@@ -153,6 +183,7 @@ export default class  Profitview extends Component {
 
           <div className={styles.tableheading}>
             <div className={styles.date1}>Date</div>
+            <div className={styles.filter} onClick={this.filter}>&#x2195;</div>
             <div className={styles.flex1}>
             <div className={styles.profit1}>Product</div>
             <div className={styles.growth1}>Quantity</div>
