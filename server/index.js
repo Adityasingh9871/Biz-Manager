@@ -158,9 +158,9 @@ app.get('/salehistory', (req, res) => {
     const filter = req.query.filter
     
     if(filter==="true")
-    var qry = "select s.date,s.sale_count,s.profit,s.user,p.product_name,p.product_price from sale2 s, product p where s.product_id=p.product_id and p.user=? order by s.date desc;"
+    var qry = "select s.date,s.sale_count,s.profit,s.user,p.product_name,p.product_price from sale2 s, product p where s.product_id=p.product_id and s.user=? order by s.date desc;"
     else if(filter==="false")
-    var qry = "select s.date,s.sale_count,s.profit,s.user,p.product_name,p.product_price from sale2 s, product p where s.product_id=p.product_id and p.user=? order by s.date;"
+    var qry = "select s.date,s.sale_count,s.profit,s.user,p.product_name,p.product_price from sale2 s, product p where s.product_id=p.product_id and s.user=? order by s.date;"
 
     db.query(qry, [user], (err, result) => {
         if (err) {

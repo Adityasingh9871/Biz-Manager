@@ -84,6 +84,7 @@ export default function Products(props) {
             quantity: data.stock
         }).then(() => {
             console.log('success')
+            alert(''+data.productName+',Added')
             
         })
     }

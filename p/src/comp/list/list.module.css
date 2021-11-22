@@ -5,12 +5,17 @@
         left: 25vw;
         width: 70vw;
         height: fit-content;
-        z-index: 2;
+        overflow: scroll;
         
         
     }
     
 }
+
+.desktopview::-webkit-scrollbar {
+    display: none;
+  }
+  
 .tag{
     font-size: 1.5rem;
     font-family: 'Roboto';
@@ -20,6 +25,14 @@
     color: gray;
     text-transform: capitalize  ;
     height: fit-content;
+}
+
+.b{
+    text-transform: capitalize;
+    font-size: xx-large;
+    font-weight: 500;
+    position: relative;
+    top: 20vh;
 }
 
 .btns{

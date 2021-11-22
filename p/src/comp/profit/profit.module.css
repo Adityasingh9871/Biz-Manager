@@ -130,6 +130,20 @@
     background-color: rgb(255, 255, 255);
     color: rgb(16, 214, 16);
 }
+.box3g{
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    background-color: rgb(255, 255, 255);
+    color: rgb(16, 214, 16);
+}
+.box3r{
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    background-color: rgb(255, 255, 255);
+    color: rgb(250, 29, 14);
+}
 
 .profitbox{
     position: relative;

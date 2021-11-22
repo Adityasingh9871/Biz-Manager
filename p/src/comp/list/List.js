@@ -70,6 +70,9 @@ export default class List extends Component {
        if(this.state.stockinhand<50)
        var a=<div className={styles.lowstock1}>Low Stock</div>
 
+       if(Object.keys(this.state.data1).length==0)
+       var b=<div className={styles.b}>no products, add new product</div>
+
     return (
         <div className={styles.desktopview}>
             <div className={styles.record}>
@@ -98,10 +101,12 @@ export default class List extends Component {
                 deletef={()=>this.delete_product(product_id)}
                  />
             ))}
-            <div className={styles.btns}>
+
+            {b}
+            {/* <div className={styles.btns}>
             <button onClick={this.props.home} className={styles.back}>back</button>
             <button onClick={this.modaltoggle} className={styles.add_p}  >Add Product</button>
-            </div>
+            </div> */}
             
 
             
