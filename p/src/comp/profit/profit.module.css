@@ -53,6 +53,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: larger;
+        font-family: 'ALGERIAN';
     }
 
     .filter{
@@ -70,6 +72,8 @@
         border-top-left-radius: 0;
         background-color: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
+        font-size: larger;
+        font-family: 'ALGERIAN';
     }
     
 
@@ -79,6 +83,8 @@
         border-top-left-radius: 0;
         background-color: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
+        font-size: larger;
+        font-family: 'ALGERIAN';
     }
     
 
@@ -193,14 +199,17 @@
 
 .ptag{
     color: rgb(62, 148, 247);
-    font-size: larger;
+    font-size: x-large;
     font-weight: 500;
+    font-family: 'ALGERIAN';
+    
 }
 
 .value{
     font-size: xx-large;
     color: rgb(62, 148, 247);
     font-weight: 600;
+    font-family: 'ALGERIAN';
 }
 
 .bigbox1{

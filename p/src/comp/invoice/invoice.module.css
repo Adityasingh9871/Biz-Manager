@@ -49,7 +49,7 @@
 }
 
 .tag1{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'ALGERIAN';
     font-size: x-large;
 }
 
@@ -130,6 +130,7 @@ td{
     border-radius: 5px;
     position: absolute;
     right: 1rem;
+    color: white;
 }
 
 
@@ -140,20 +141,24 @@ td{
 .cartmodal{
     width: 80%;
     height: 60vh;
-    background-color: wheat;
+    background-color: rgb(199, 198, 196);
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: 5rem;
     overflow: scroll;
-    
-    
-    
+    border-radius: 10px;  
 }
+
+
+.cartmodal::-webkit-scrollbar {
+    display: none;
+  }
 
 .cartitem,.cartitem2{
     margin-top: 1rem;
     text-transform: capitalize;
+    font-family: 'ROBOTO';
 }
 
 .invoicesection{
@@ -197,6 +202,7 @@ td{
     font-size: xx-large;
     font-weight: 500;
     color: blue;
+    font-family: 'ALGERIAN';
 }
 .i2{
     position: absolute;
@@ -205,6 +211,7 @@ td{
     font-size: xx-large;
     font-weight: 100;
     color: rgb(0, 0, 0);
+    font-family: 'Merriweather';
 }
 .i3{
     position: absolute;
@@ -213,6 +220,7 @@ td{
     font-size: large;
     font-weight: 100;
     color: rgb(0, 0, 0);
+    font-family: 'ROBOTO';
 }
 .i4{
     position: absolute;
@@ -222,6 +230,7 @@ td{
     font-weight: 400;
     text-transform: capitalize;
     color: rgb(0, 0, 0);
+    font-family: 'ROBOTO';
 }
 .i5{
     position: absolute;
@@ -230,6 +239,7 @@ td{
     font-size: large;
     font-weight: 100;
     color: rgb(0, 0, 0);
+    font-family: 'NEUTON';
 }
 .i6{
     position: absolute;
@@ -244,6 +254,8 @@ td{
     height: 1.7rem;
     color: white;
     background-color: blue;
+    border-radius: 6px;
+    
 }
 
 .i7{
@@ -254,6 +266,7 @@ td{
     font-weight: 400;
     text-transform: capitalize;
     color: rgb(0, 0, 0);
+    font-family: 'ROBOTO';
 }
 
 .sub1{

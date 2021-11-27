@@ -12,6 +12,7 @@ export default function Showlist(props) {
 
        
         props.deletef(props.product_id) //for temporary removal
+        props.updatestock(props.quantity)
         
         axios.post('http://localhost:3001/delete_product',{
             

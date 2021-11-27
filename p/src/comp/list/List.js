@@ -20,11 +20,18 @@ export default class List extends Component {
         let updated_data=this.state.data1.filter(data_ => data_.product_id != to_del_id);
         this.setState({ data1: updated_data });
         this.setState({totalproduct:this.state.totalproduct-1})
+        
+          
+    }
+
+    update_stock(quantity){
+        
+        this.setState({stockinhand:this.state.stockinhand-quantity})
           
     }
 
     modaltoggle=()=>{
-        this.setState({isopen:!this.state.isopen})
+        this.setState({isopen:!this.state.isopen})  
         console.log(this.state.isopen)
     }
     
@@ -54,7 +61,7 @@ export default class List extends Component {
           .then(res => {
             const data = res.data[0].stock;
             this.setState({stockinhand:data})
-            console.log(data)
+            console.log('stock in hand',data)
           }) 
 
 
@@ -99,6 +106,7 @@ export default class List extends Component {
                 price={product_price}
                 quantity={stock}
                 deletef={()=>this.delete_product(product_id)}
+                updatestock={()=>this.update_stock(stock)}
                  />
             ))}
 

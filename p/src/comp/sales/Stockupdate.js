@@ -54,7 +54,7 @@ function Stockupdate(props) {
     return (
         <div>      
             
-            <div className={styles.card}>
+            <div className={styles.card2}>
                 <button className={styles.addbtn} onClick={handleadd} >+</button>
                 
                 <div className={styles.pname}>{props.product_name}</div>

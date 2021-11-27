@@ -6,7 +6,7 @@ function Profit(props) {
     
     
    if(props.growth<=0)
-   var growth1=<div className={styles.box3r}>&uarr;{props.growth}%</div>
+   var growth1=<div className={styles.box3r}>&darr;{props.growth}%</div>
    else
    var growth2=<div className={styles.box3g}>&uarr;{props.growth}%</div>
    

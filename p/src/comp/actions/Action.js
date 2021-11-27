@@ -8,6 +8,7 @@ import icon3 from '../../assets/charts.png'
 import icon4 from '../../assets/sale.png'
 import icon5 from '../../assets/profit.png'
 import icon6 from '../../assets/bill.png'
+import icon7 from '../../assets/profile.png'
 import {Route,Link,Switch} from 'react-router-dom'
 import Products from '../products/Products'
 import List from '../list/List'
@@ -16,6 +17,7 @@ import sales from '../sales/Sales'
 import Profit from '../profit/Profitview'
 import Sales from '../sales/Sales'
 import Invoice from '../invoice/Invoice'
+import Profile from '../profile/Profile'
 
 
 
@@ -92,6 +94,7 @@ export default class Action extends React.Component {
                         <div className={styles.products} onClick={this.props.handleaddsales}><img alt='img' src={icon4} className={styles.img1} /><Link to='/sale' className={styles.tag3}>Sales</Link><div className={styles.line} /></div>
                         <div className={styles.products} onClick={this.props.handleprofitview}><img alt='img' src={icon5} className={styles.img1} /><Link to='/profit' className={styles.tag3}>Profit</Link><div className={styles.line} /></div>
                         <div className={styles.products} onClick={this.props.handleinvoice}><img alt='img' src={icon6} className={styles.img1} /><Link to='/invoice' className={styles.tag3}>Invoice</Link><div className={styles.line} /></div>
+                        <div className={styles.products} onClick={this.props.handleinvoice}><img alt='img' src={icon7} className={styles.img1} /><Link to='/profile' className={styles.tag3}>Profile</Link><div className={styles.line} /></div>
                     </div>
 
                       </div>
@@ -113,6 +116,9 @@ export default class Action extends React.Component {
                         </Route>
                         <Route path='/invoice'>
                           <Invoice />
+                        </Route>
+                        <Route path='/profile'>
+                          <Profile />
                         </Route>
                         <Route path='/'>
                           <Charts />

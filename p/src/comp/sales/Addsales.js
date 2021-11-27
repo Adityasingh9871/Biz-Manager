@@ -99,7 +99,7 @@ function Addsales(props) {
                 
             </div> 
             
-            <Button variant="contained" color="primary" size="small" className={styles.submitbtn} onClick={addsale} startIcon={<SaveIcon />}>Save</Button>
+            <Button variant="contained"  size="small" className={styles.submitbtn} onClick={addsale} startIcon={<SaveIcon />}>Save</Button>
             
             
         </div>

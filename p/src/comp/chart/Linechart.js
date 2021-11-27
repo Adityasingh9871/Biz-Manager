@@ -48,11 +48,11 @@ export default class ApexChart extends Component {
             label: 'date wise profit',
             data: this.state.profit,
             fill: false,
-            backgroundColor: 'green',
+            backgroundColor: "rgba(75,192,192,0.2)",
             borderColor: 'green',
             cubicInterpolationMode: 'monotone',
             tension: 0.4,
-            fill: false
+            fill: true
           },
         ],
         

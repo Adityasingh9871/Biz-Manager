@@ -110,7 +110,7 @@ export default function Invoice() {
         var subf=<div className={styles.sub1}><div className={styles.sub2}>Subtotal&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal}</div><div className={styles.sub2}>Taxrate&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;4.25%</div><div className={styles.sub2}>Tax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal*0.0425}</div><div className={styles.sub2}>Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal-(subtotal*0.0425)}</div></div>
     }
     if(subtotal>0)
-    var subf=<div className={styles.sub1}><div className={styles.sub2}>Subtotal&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal}</div><div className={styles.sub2}>Taxrate&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;4.25%</div><div className={styles.sub2}>Tax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal*0.0425}</div><div className={styles.sub2}>Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal-(subtotal*0.0425)}</div></div>
+    var subf=<div className={styles.sub1}><div className={styles.sub2}>Subtotal&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;${subtotal}</div><div className={styles.sub2}>Taxrate&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;4.25%</div><div className={styles.sub2}>Tax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;${subtotal*0.0425}</div><div className={styles.sub2}>Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;${subtotal-(subtotal*0.0425)}</div></div>
     else
     var subf=<div></div>
 
@@ -139,11 +139,11 @@ export default function Invoice() {
                 <div className={styles.cart}>
                     <div className={styles.tag1}>CART:  </div>
 
-                    <button className={styles.additem} onClick={()=>setcartmodal(true)}>add items</button>
+                    <button className={styles.additem} onClick={()=>setcartmodal(true)}>Add Items</button>
                     <div className={styles.cartitem}>
                 {
                  cartitems.map(item=>(    //map the data 
-                 <div className={styles.cartitem2}>{item.pname}&nbsp; x &nbsp;{item.quantity} <button className={styles.delbtn} onClick={()=>delete_product(item.id)}>delete</button></div>
+                 <div className={styles.cartitem2}>{item.pname}&nbsp; x &nbsp;{item.quantity} <button className={styles.delbtn} onClick={()=>delete_product(item.id)}>Delete</button></div>
                  
                  ))
                 }
@@ -152,7 +152,7 @@ export default function Invoice() {
                 
                 
                 <div>
-                <button onClick={findsubtotal} className={styles.calcbtn}>calculate</button>
+                <button onClick={findsubtotal} className={styles.calcbtn}>Calculate</button>
                 <button onClick={()=>printinvoice('invoice123')}  className={styles.print}>Print</button>
                 </div>
                 
@@ -177,13 +177,14 @@ export default function Invoice() {
                     <div className={styles.i7}>Email:&nbsp;&nbsp;{clientemail}</div>
 
 
+
                     <table border='0' className={styles.table}>
                         <tr>
-                            <td className={styles.idtable}>id</td>
-                            <td className={styles.td1}>name</td>
-                            <td className={styles.td1}>price</td>
-                            <td className={styles.td1}>quantity</td>
-                            <td className={styles.td1}>amount</td>
+                            <td className={styles.idtable}>Id</td>
+                            <td className={styles.td1}>Name</td>
+                            <td className={styles.td1}>Price</td>
+                            <td className={styles.td1}>Quantity</td>
+                            <td className={styles.td1}>Cost</td>
                         </tr>
                     </table>
 
@@ -197,12 +198,7 @@ export default function Invoice() {
                     }
                     
 
-                    {/* <div className={styles.sub1}>
-                        <div className={styles.sub2}>Subtotal&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal}</div>
-                        <div className={styles.sub2}>Taxrate&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;4.25%</div>
-                        <div className={styles.sub2}>Tax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal*0.0425}</div>
-                        <div className={styles.sub2}>Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{subtotal-(subtotal*0.0425)}</div>
-                    </div> */}
+                    
 
                     {subf}
                     

@@ -19,12 +19,21 @@
     transform: translateX(-50%);
     top: 2.5vh;
     cursor: pointer;
-    color: rgb(33, 185, 245);;
+    color: rgb(21, 179, 241);;
+}
+
+.img1{
+    width: 2.5rem;
+    position: absolute;
+    left: 4rem;
+    top: 2.5vh;
 }
 
 @media only screen and (min-width: 450px) {
     .tag{
-        left: 10rem;
+        left: 14rem;
+        font-family: 'ALGERIAN';
+        font-weight: 200;
     }
     
     }
@@ -154,3 +163,4 @@
     }
     
     }
+

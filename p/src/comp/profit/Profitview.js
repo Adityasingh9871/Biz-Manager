@@ -125,6 +125,7 @@ export default class  Profitview extends Component {
                               <div className={styles.ptag}>Profit</div>
                               <div className={styles.value}>${this.state.totalprofit}</div>      
                             </div>
+                            
                               
                             <div className={styles.tableheading}>
                               <div className={styles.date1}>Date</div>

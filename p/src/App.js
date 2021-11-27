@@ -8,7 +8,10 @@ function App() {
   const [loginstat, setloginstat] = useState('')
 
   useEffect(() => {
+    if(localStorage.getItem('isloggedin'))
    setloginstat(localStorage.getItem('isloggedin'))
+   else
+   localStorage.setItem('isloggedin','false')
   }, [loginstat])
 
   if(loginstat==='true')

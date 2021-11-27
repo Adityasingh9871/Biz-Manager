@@ -4,6 +4,10 @@ import React, { Component } from 'react'
 import Addsales from './Addsales'
 import Stockupdate from './Stockupdate'
 import styles from './sale.module.css'
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import TabPanel from '@mui/lab/TabPanel';
+import TabContext from '@mui/lab/TabContext';
 
 export default class  Sales extends Component {
     
@@ -12,6 +16,7 @@ export default class  Sales extends Component {
         this.state={
             data:[],
             profit:[],
+            Value1:'1',
             
         };
        
@@ -38,7 +43,10 @@ export default class  Sales extends Component {
 
    
     
-    
+    handleChange = (event, newValue) => {
+        this.setState({Value1:newValue});
+    };
+      
 
     
 
@@ -46,31 +54,51 @@ export default class  Sales extends Component {
         
     return (
         <div className={styles.desktopview}>
-            <h2>Sale Update</h2>
-            {this.state.data.map((item)=>(    //map the data 
-                <Addsales 
-                key={item.product_id}
-                product_id={item.product_id}
-                product_name={item.product_name}
-                product_price={item.product_price} 
-                user={item.user}
-                
-                
-                />
-            ))}
 
-            <h2>Stock Update</h2>
-            {this.state.data.map((item)=>(    //map the data 
-                <Stockupdate 
-                key={item.product_id}
-                product_id={item.product_id}
-                product_name={item.product_name}
-                product_price={item.product_price} 
-                user={item.user}
-                
-                
-                />
-            ))}
+<TabContext value={this.state.Value1}>
+                    <div className={styles.tabs}>
+                        <Tabs onChange={this.handleChange} >
+                            <Tab label="Add Sale Record&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" value="1" />
+                            <Tab label="Update Stock" value="2" />
+                        </Tabs>
+                    </div>
+                    <div className={styles.panel}>
+                        <TabPanel value="1">
+                        <h2>Sale Update</h2>
+                            {this.state.data.map((item)=>(    //map the data 
+                                <Addsales 
+                                key={item.product_id}
+                                product_id={item.product_id}
+                                product_name={item.product_name}
+                                product_price={item.product_price} 
+                                user={item.user}
+                                
+                                
+                                />
+                            ))}
+                              
+                        </TabPanel>
+                        <TabPanel value="2">
+                        
+                        <h2>Stock Update</h2>
+                            {this.state.data.map((item)=>(    //map the data 
+                                <Stockupdate 
+                                key={item.product_id}
+                                product_id={item.product_id}
+                                product_name={item.product_name}
+                                product_price={item.product_price} 
+                                user={item.user}
+                                
+                                
+                                />
+                            ))}
+
+                        </TabPanel>
+                    </div>
+                </TabContext>
+
+
+           
             
             
            

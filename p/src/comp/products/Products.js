@@ -85,6 +85,7 @@ export default function Products(props) {
         }).then(() => {
             console.log('success')
             alert(''+data.productName+',Added')
+            window.location.reload(false)
             
         })
     }
@@ -120,7 +121,7 @@ export default function Products(props) {
                     <p>
 
                     </p>
-                    <button type='submit' className={styles.submit} >Submit</button>
+                    <button type='submit'  className={styles.submit} >Submit</button>
 
                     <button onClick={props.home} className={styles.back}><ArrowBackIcon /></button>
                 </Form>

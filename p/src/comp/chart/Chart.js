@@ -4,6 +4,7 @@ import axios from 'axios'
 import styles from './charts.module.css'
 import Line from './Linechart'
 import LineG from './LinechartG'
+import LineT from './LinechartT'
 import DoughnutC from './Doughnat_chart'
 
 
@@ -70,6 +71,22 @@ export default class App extends React.Component {
   
     return (
       <div className={styles.desktopview}>
+
+        <div className={styles.doughnutchartbox}>
+        <div className={styles.doughnutchart}><DoughnutC login_status={this.props.login_status}  /></div>
+          <div className={styles.tag}>Profit by each product</div>
+        </div>
+
+        <div className={styles.curvedlinebox3}>
+          <div className={styles.curvedlinechart3}>
+            <div className={styles.contain}>
+            <LineT login_status={this.props.login_status} className={styles.ll}  />
+          </div>
+          </div>
+          <div className={styles.tag3}>product</div>
+        </div>
+
+
         <div className={styles.barchartbox}>
         <div className={styles.barchart}><Bar
           data={state}
@@ -89,10 +106,7 @@ export default class App extends React.Component {
         </div>
 
 
-        <div className={styles.doughnutchartbox}>
-        <div className={styles.doughnutchart}><DoughnutC login_status={this.props.login_status}  /></div>
-          <div className={styles.tag}>Profit by each product</div>
-        </div>
+        
 
         <div className={styles.curvedlinebox}>
           <div className={styles.curvedlinechart}>
@@ -110,6 +124,8 @@ export default class App extends React.Component {
           </div>
           <div className={styles.tag}>Daily growth change</div>
         </div>
+
+        
 
       
       </div>

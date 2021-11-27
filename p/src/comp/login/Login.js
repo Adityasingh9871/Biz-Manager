@@ -106,7 +106,8 @@ export default function Login(props) {
     }
     return (
         <div>
-            <Modal isOpen={true}  >
+            <Modal isOpen={true}  className={styles.modalbk}>
+                <div >
                 <TabContext value={Value1}>
                     <div className={styles.tabs}>
                         <Tabs onChange={handleChange} >
@@ -176,6 +177,7 @@ export default function Login(props) {
                         </TabPanel>
                     </div>
                 </TabContext>
+                </div>
             </Modal>
         </div>
     )

@@ -158,11 +158,11 @@ app.get('/salehistory', (req, res) => {
     const filter = req.query.filter
     
     if(filter==="true")
-    var qry = "select s.date,s.sale_count,s.profit,s.user,p.product_name,p.product_price from sale2 s, product p where s.product_id=p.product_id and s.user=? order by s.date desc;"
+    var qry = "select s.date,s.sale_count,s.profit,s.user,p.product_name,p.product_price from sale2 s, product p where s.product_id=p.product_id and s.user=? and p.user=? order by s.date desc;"
     else if(filter==="false")
-    var qry = "select s.date,s.sale_count,s.profit,s.user,p.product_name,p.product_price from sale2 s, product p where s.product_id=p.product_id and s.user=? order by s.date;"
+    var qry = "select s.date,s.sale_count,s.profit,s.user,p.product_name,p.product_price from sale2 s, product p where s.product_id=p.product_id and s.user=? and p.user=? order by s.date;"
 
-    db.query(qry, [user], (err, result) => {
+    db.query(qry, [user,user], (err, result) => {
         if (err) {
             console.log(err)
         }
@@ -183,6 +183,25 @@ app.get('/totalprofit', (req, res) => {
         }
         else {
             console.log("extracted total profit")
+            return res.send(result)
+
+        }
+    })
+})
+
+app.get('/chart5', (req, res) => {
+    const user = req.query.user
+    const p1 = req.query.p1
+    const p2 = req.query.p2
+    const p3 = req.query.p3
+    
+    var qry = "select s1.date,s1.profit as p1,s2.profit as p2,s3.profit as p3 from sale2 s1 ,sale2 s2 ,sale2 s3 where s1.user=? and s2.user=? and s3.user=? and s1.product_id=? and s2.product_id=? and s3.product_id=? and s1.date=s2.date and s2.date=s3.date group by s1.date ;"
+    db.query(qry, [user,user,user,p1,p2,p3], (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            console.log("extracted chart5")
             return res.send(result)
 
         }
@@ -551,10 +570,44 @@ app.post('/login', (req, res) => {
 
 })
 
-app.post('/userdetail', (req, res) => {
-    user_global = req.body.username
-    console.log(user_global)
+app.post('/profile', (req, res) => {
+
+    const username = req.body.username
+    
+    var qry = 'SELECT * FROM USER_LOGIN WHERE USERNAME= ?;'
+
+    db.query(qry, [username], (err, result) => {
+        if (err) {
+            return res.send({ err: err })
+        }
+        else
+            return res.send(result)
+        
+    })
+
 })
+app.post('/newprofile', (req, res) => {
+
+    const username = req.body.username
+    const name = req.body.name
+    const newusername = req.body.newusername
+    const password = req.body.password
+    const shopname = req.body.shopname
+    const shopaddress = req.body.shopaddress
+    
+    var qry = 'update user_login set name=?,username=?,password=?,shopname=?,shopaddress=? where username =?;'
+
+    db.query(qry, [name,newusername,password,shopname,shopaddress,username], (err, result) => {
+        if (err) {
+            return res.send({ err: err })
+        }
+        else
+            return res.send(result)
+        
+    })
+
+})
+
 
 
 
