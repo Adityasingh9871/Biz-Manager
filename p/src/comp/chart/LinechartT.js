@@ -72,7 +72,7 @@ export default class ApexChart extends Component {
         labels: this.state.label,
         datasets: [
           {
-            label: `a${this.state.topproduct[0]}`,
+            label: "1st",
             data: this.state.profit,
             fill: false,
             backgroundColor: "rgba(75,192,192,0.2)",
@@ -82,7 +82,7 @@ export default class ApexChart extends Component {
             fill: true
           },
           {
-            label: 'p2',
+            label: '2nd',
             data: this.state.profit2,
             fill: false,
             backgroundColor: "rgba(75,192,192,0.2)",
@@ -92,7 +92,7 @@ export default class ApexChart extends Component {
             fill: true
           },
           {
-            label: 'p3',
+            label: '3rd',
             data: this.state.profit3,
             fill: false,
             backgroundColor: "rgba(75,192,192,0.2)",

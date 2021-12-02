@@ -83,7 +83,7 @@ export default class App extends React.Component {
             <LineT login_status={this.props.login_status} className={styles.ll}  />
           </div>
           </div>
-          <div className={styles.tag3}>product</div>
+          <div className={styles.tag3}>Top products changes</div>
         </div>
 
 

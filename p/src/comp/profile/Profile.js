@@ -44,7 +44,7 @@ export default function Profile() {
             shopaddress:nshopaddress
             
         }).then((response) => {
-            alert('edited name')
+            alert('Profile updated')
             console.log('success')
             
         })

@@ -492,11 +492,12 @@ app.post('/registeruser', (req, res) => {
     db.query(qry, [username, password,name,shopname,address], (err, result) => {
         if (err) {
             console.log(err)
+            return res.send('error')
            // alert('User already Registered !')
         }
         else {
             console.log('user registered')
-            return res.send("hello")
+            return res.send("noerror")
         }
     })
 

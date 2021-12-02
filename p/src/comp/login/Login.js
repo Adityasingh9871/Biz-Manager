@@ -97,9 +97,15 @@ export default function Login(props) {
             password: data.password,
             shopname: data.shopname,
             address: data.address
-        }).then(() => {
-            console.log('success')
-            alert(data.name + ', User Registered Successfully ! ')
+        }).then((res) => {
+            if(res.data=='error')
+            alert('error') 
+            else if(res.data=='noerror')
+            {
+              console.log('success')
+            alert(data.name + ', User Registered Successfully ! ')  
+            }
+            
 
         })
         
