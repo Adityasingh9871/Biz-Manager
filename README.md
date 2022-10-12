@@ -6,4 +6,5 @@ A online web application which can be used by shop owners to-
 •	Generate invoice for customers
 •	Maintain independent data for product details
 •	Get daily and monthly profit, profit growth data
-https://github.com/Adityasingh9871/Biz-Manager/issues/1#issue-1406272133
+![image](https://user-images.githubusercontent.com/76525003/195363002-f5bd2386-0259-46b3-930e-edfa6bb657df.png)
+
